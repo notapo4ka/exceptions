@@ -2,16 +2,9 @@ public class ArrayValueCalculator {
 
     public static int doCalc(String[][] matrix) {
             if (matrix == null) {
-                throw new NullPointerException("The array must not be null, the array must be 4x4");
+                throw new NullPointerException("The array must not be null");
             }
-            if (matrix.length != 4) {
-                throw new ArraySizeException("The array must be 4x4");
-            }
-            for (int i = 0; i < matrix.length; i++) {
-                if (matrix[i].length != 4) {
-                    throw new ArraySizeException("The array must be 4x4");
-                }
-            }
+            validateMatrixSize(matrix);
 
             int sum = 0;
             for (int i = 0; i < matrix.length; i++) {
@@ -24,5 +17,16 @@ public class ArrayValueCalculator {
                 }
             }
             return sum;
+        }
+
+        public static void validateMatrixSize(String[][] matrix) {
+            if (matrix.length != 4) {
+                throw new ArraySizeException("The array must be 4x4");
+            }
+            for (int i = 0; i < matrix.length; i++) {
+                if (matrix[i].length != 4) {
+                    throw new ArraySizeException("The array must be 4x4");
+                }
+            }
         }
     }
